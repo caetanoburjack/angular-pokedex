@@ -1,0 +1,55 @@
+<app-header></app-header>
+<main>
+
+  <section class="pokemon__status">
+    <div class="image__name">
+      <section>
+        <img id="pokemon-image"
+      [src]="pokemon[0].sprites.other.dream_world.front_default"
+      [alt]="pokemon[0].name"
+      >
+      </section>
+
+      <section class="pokemon__name">
+        <h2>{{ pokemon[1].names[0].name }}</h2>
+        <h1>{{ pokemon[0].name }}</h1>
+      </section>
+    </div>
+
+    <article class="status__statistics">
+      <section class="statistics__container">
+        <h3>Statistics</h3>
+
+        <ol class="status__list">
+          <li *ngFor="let value of pokemon[0].stats">
+            <span class="status__stat">
+              {{ value.stat.name }}
+            </span>
+            <span class="status__bar">
+              <span class="color__bar"
+                *ngIf="value.base_stat < 50"
+                [style.width]="value.base_stat + '%'"
+                style="background-color: red;"></span>
+              <span class="color__bar"
+                *ngIf="value.base_stat >= 50"
+                [style.width]="value.base_stat + '%'"
+                style="background-color: green;"></span>
+            </span>
+            <span class="status__stat-value">
+              <strong>
+                {{ value.base_stat }}
+              </strong>
+            </span>
+          </li>
+        </ol>
+
+      </section>
+
+      <div class="button">
+        <app-button [routerLink]="['']" [value]="buttonValue"></app-button>
+      </div>
+    </article>
+  </section>
+</main>
+
+<app-footer></app-footer>
